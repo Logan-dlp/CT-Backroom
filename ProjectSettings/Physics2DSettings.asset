@@ -3,7 +3,11 @@
 --- !u!19 &1
 Physics2DSettings:
   m_ObjectHideFlags: 0
+<<<<<<< Updated upstream
   serializedVersion: 4
+=======
+  serializedVersion: 5
+>>>>>>> Stashed changes
   m_Gravity: {x: 0, y: -9.81}
   m_DefaultMaterial: {fileID: 0}
   m_VelocityIterations: 8
@@ -38,7 +42,11 @@ Physics2DSettings:
     m_IslandSolverJointCostScale: 10
     m_IslandSolverBodiesPerJob: 50
     m_IslandSolverContactsPerJob: 50
+<<<<<<< Updated upstream
   m_AutoSimulation: 1
+=======
+  m_SimulationMode: 0
+>>>>>>> Stashed changes
   m_QueriesHitTriggers: 1
   m_QueriesStartInColliders: 1
   m_CallbacksOnDisable: 1
