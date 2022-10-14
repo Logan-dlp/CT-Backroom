@@ -75,12 +75,9 @@ public class PlayerMouvement : MonoBehaviour
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (grounded)
-        {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        }else if (!grounded)
-        {
+        else if (!grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * aireMultiplier, ForceMode.Force);
-        }
     }
     private void SpeedControl()
     {
