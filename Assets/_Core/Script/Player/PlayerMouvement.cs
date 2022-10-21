@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
+using UnityEditor;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMouvement : MonoBehaviour
 {
@@ -50,7 +54,7 @@ public class PlayerMouvement : MonoBehaviour
         {
             rb.drag = 0;
         }
-        // add layer "whatIsGround" in a plane.
+        
     }
     private void FixedUpdate()
     {
