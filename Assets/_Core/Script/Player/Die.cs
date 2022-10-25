@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Die : MonoBehaviour
 {
     Rigidbody rb;
+    [SerializeField] string sceneDie;
     void Start()
     {
         if (rb != null) return;
@@ -14,6 +16,6 @@ public class Die : MonoBehaviour
    {
         MonsterDetection _detect = _colider.gameObject.GetComponent<MonsterDetection>();
         if (_detect == null) return;
-        transform.position = new Vector3(0, 0, 0);
+        SceneManager.LoadScene(sceneDie);
     }
 }

@@ -1,16 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GoToMenu : MonoBehaviour
 {
-    [SerializeField] string nameMenu;
+    [SerializeField] GameObject resumeMenu;
+    [SerializeField] bool menuIsOpen = false;
+
+    private void Start()
+    {
+        resumeMenu.SetActive(false);
+    }
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (menuIsOpen)
         {
-            SceneManager.LoadScene(nameMenu);
+            Cursor.lockState = CursorLockMode.None;
+        }else if (!menuIsOpen)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            resumeMenu.SetActive(!menuIsOpen);
+            Cursor.visible = !menuIsOpen;
+            menuIsOpen = !menuIsOpen;
+        }
+        if (resumeMenu.activeSelf == false)
+        {
+            menuIsOpen = false;
+            Cursor.visible = menuIsOpen;
         }
     }
 }
