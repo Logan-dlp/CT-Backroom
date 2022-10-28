@@ -1,5 +1,9 @@
 fileFormatVersion: 2
 <<<<<<< Updated upstream
+guid: c743aa734657fa5409513dac4f8c2281
+PrefabImporter:
+  externalObjects: {}
+=======
 <<<<<<< Updated upstream:Assets/_Core/Material/Chair/Chair.mat.meta
 guid: 814435d663a8521488baa2f432a25676
 NativeFormatImporter:
@@ -7,12 +11,9 @@ NativeFormatImporter:
 guid: c743aa734657fa5409513dac4f8c2281
 PrefabImporter:
 >>>>>>> Stashed changes:Assets/_Core/Prefabs/Structure 1.prefab.meta
-=======
-guid: 814435d663a8521488baa2f432a25676
-NativeFormatImporter:
->>>>>>> Stashed changes
   externalObjects: {}
   mainObjectFileID: 2100000
+>>>>>>> Stashed changes
   userData: 
   assetBundleName: 
   assetBundleVariant: 

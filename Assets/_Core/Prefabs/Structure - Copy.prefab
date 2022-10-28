@@ -58250,7 +58250,6 @@ GameObject:
   - component: {fileID: 7633002352802901943}
   - component: {fileID: 66436339599039276}
   m_Layer: 0
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/_Core/Prefabs/Structure 1.prefab
   m_Name: Structure 1
   m_TagString: Untagged
@@ -58327,9 +58326,6 @@ GameObject:
 =======
   m_Name: "Bo\xEEte001"
 >>>>>>> Stashed changes:Assets/_Core/Prefabs/Structure - Copy.prefab
-=======
-  m_Name: "Bo\xEEte001"
->>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
