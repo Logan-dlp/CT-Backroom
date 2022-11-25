@@ -5,35 +5,59 @@ using UnityEngine.AI;
 
 public class MonsterDetection : MonoBehaviour
 {
-    // AI
+    #region Settings
+    #region AI
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-
-    // SetPoint
+    #endregion
+    #region Set Point
     public Vector3 walkPoint;
     bool walkPointSet;
-    public float walkPointRange = 99999f;
-
-    // Delay
+    float walkPointRange = 30f;
+    #endregion
+    #region Delay
     private List<Action> AIAction;
     private int indexFunctionBehavior = 0;
     private float delayBeforeSwitch = 30;
     private float counter = 0;
+    #endregion
+    #endregion
 
-    private void Awake()
+    #region Meths
+    #region Target Search
+    void SetPoint()
     {
-        player = GameObject.Find("Player").transform;
-        agent = GetComponent<NavMeshAgent>();
+        if (!walkPointSet) SearchWalkPoint();
+
+        if (walkPointSet)
+            agent.SetDestination(walkPoint);
+
+        Vector3 distanceToWalkPoint = transform.position - walkPoint;
+
+        if (distanceToWalkPoint.magnitude < 1f)
+            walkPointSet = false;
     }
-    private void Start()
+    void SearchWalkPoint()
     {
-        AIAction = new List<Action>();
-        AIAction.Add(SetPoint);
-        AIAction.Add(PlayerFollow);
+        // Calculate random point in range
+        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+            walkPointSet = true;
 
     }
-    private void Update()
+    void PlayerFollow()
+    {
+        walkPointSet = false;
+        agent.SetDestination(player.position);
+    }
+    #endregion
+    #region Comportement
+    void SwitchComportement()
     {
         counter += Time.deltaTime;
         if (counter > delayBeforeSwitch)
@@ -47,36 +71,27 @@ public class MonsterDetection : MonoBehaviour
         }
         AIAction[indexFunctionBehavior]();
     }
-    private void SetPoint()
+    void AIActions()
     {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-
-        Debug.Log("OK pour le SetPoint");
+        AIAction = new List<Action>();
+        AIAction.Add(SetPoint);
+        AIAction.Add(PlayerFollow);
     }
-    private void SearchWalkPoint()
+    #endregion
+    #endregion
+    #region Meths Unity
+    private void Awake()
     {
-        // Calculate random point in range
-        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
-
+        player = GameObject.Find("Player").transform;
+        agent = GetComponent<NavMeshAgent>();
     }
-    private void PlayerFollow()
+    private void Start()
     {
-        walkPointSet = false;
-        agent.SetDestination(player.position);
-        Debug.Log("OK pour le Follow");
+        AIActions();
     }
+    private void Update()
+    {
+        SwitchComportement();
+    }
+    #endregion
 }

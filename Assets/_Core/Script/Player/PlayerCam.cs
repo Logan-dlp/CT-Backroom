@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCam : MonoBehaviour
 {
+    #region Settings
     [SerializeField] float sensX;
     [SerializeField] float sensY;
 
@@ -11,12 +10,15 @@ public class PlayerCam : MonoBehaviour
 
     float xRotation;
     float yRotation;
-    private void Start()
+    #endregion
+
+    #region Meths
+    void CursorMode()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-    private void Update()
+    void CameraMouvement()
     {
         float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
         float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
@@ -28,4 +30,15 @@ public class PlayerCam : MonoBehaviour
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
     }
+    #endregion
+    #region Meths Unity
+    private void Start()
+    {
+        CursorMode();
+    }
+    private void Update()
+    {
+        CameraMouvement();
+    }
+    #endregion
 }

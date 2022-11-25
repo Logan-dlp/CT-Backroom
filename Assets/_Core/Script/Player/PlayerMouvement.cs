@@ -2,98 +2,63 @@ using UnityEngine;
 
 public class PlayerMouvement : MonoBehaviour
 {
-    [Header("Mouvement"), Space]
+    #region Settings
+    [Header("Speed Settings")]
     [SerializeField] float moveSpeed;
-
-    [SerializeField] float groundDrag;
-
-    [SerializeField] float jumpForce;
-    [SerializeField] float jumpCooldown;
-    [SerializeField] float aireMultiplier;
-    bool readyToJump;
-
-    [Header("Keybinds"), Space]
-    [SerializeField] KeyCode jumpKey = KeyCode.Space;
-
-    [Header("Ground Check"), Space]
-    [SerializeField] float playerHeight;
-    [SerializeField] LayerMask whatIsGround;
-    bool grounded;
-
-    [SerializeField] Transform orientation;
+    [SerializeField] float dragSpeed;
+    [SerializeField] Transform playerOrientation;
 
     float horizontalInput;
     float verticalInput;
 
-    Vector3 moveDirection;
-
     Rigidbody rb;
-    private void Start()
+    Vector3 moveDirection;
+    #endregion
+
+    #region Meths
+    void SetRigidbody()
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
-    private void Update()
+    void ApplyDrag()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
-
-        MyInput();
-        SpeedControl();
-
-        if (grounded)
+        rb.drag = dragSpeed;
+    }
+    void ControllerInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
+    }
+    void LimitVelocity()
+    {
+        Vector3 _vel = new Vector3(rb.velocity.x, 0, rb.velocity.y);
+        if(_vel.magnitude > moveSpeed)
         {
-            rb.drag = groundDrag;
+            Vector3 _limitVel = _vel.normalized * moveSpeed;
+            rb.velocity = new Vector3(_limitVel.x, rb.velocity.y, _limitVel.z);
         }
-        else
-        {
-            rb.drag = 0;
-        }
-        
+    }
+    void MovePlayer()
+    {
+        moveDirection = playerOrientation.forward * verticalInput + playerOrientation.right * horizontalInput;
+        rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+    }
+    #endregion
+    #region Meths Unity
+    private void Start()
+    {
+        SetRigidbody();
     }
     private void FixedUpdate()
     {
         MovePlayer();
     }
-    private void MyInput()
+    private void Update()
     {
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        verticalInput = Input.GetAxisRaw("Vertical");
-
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
-        {
-            readyToJump = false;
-
-            Jump();
-
-            Invoke(nameof(ResetJump), jumpCooldown);
-        }
+        ApplyDrag();
+        LimitVelocity();
+        ControllerInput();
     }
-    private void MovePlayer()
-    {
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        if (grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-        else if (!grounded)
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * aireMultiplier, ForceMode.Force);
-    }
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-
-        if(flatVel.magnitude > moveSpeed)
-        {
-            Vector3 limitedVel = flatVel.normalized * moveSpeed;
-            rb.velocity = new Vector3(limitedVel.x, limitedVel.y, limitedVel.z);
-        }
-    }
-    private void Jump()
-    {
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-    }
-    private void ResetJump()
-    {
-        readyToJump = true;
-    }
+    #endregion
 }

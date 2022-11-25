@@ -2,19 +2,23 @@ using UnityEngine;
 
 public class GoToMenu : MonoBehaviour
 {
+    #region Settings
     [SerializeField] GameObject resumeMenu;
     [SerializeField] bool menuIsOpen = false;
+    #endregion
 
-    private void Start()
+    #region Meths
+    void StartActiv()
     {
         resumeMenu.SetActive(false);
     }
-    private void Update()
+    void OpenMenu()
     {
         if (menuIsOpen)
         {
             Cursor.lockState = CursorLockMode.None;
-        }else if (!menuIsOpen)
+        }
+        else if (!menuIsOpen)
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -30,4 +34,15 @@ public class GoToMenu : MonoBehaviour
             Cursor.visible = menuIsOpen;
         }
     }
+    #endregion
+    #region Meths Unity
+    private void Start()
+    {
+        StartActiv();
+    }
+    private void Update()
+    {
+        OpenMenu();
+    }
+    #endregion
 }
