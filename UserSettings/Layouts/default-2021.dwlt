@@ -48,7 +48,7 @@ MonoBehaviour:
   m_MinSize: {x: 503, y: 492}
   m_MaxSize: {x: 18097, y: 14042}
   vertical: 0
-  controlID: 44
+  controlID: 17
 --- !u!114 &3
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 10001, y: 14042}
   vertical: 1
-  controlID: 50
+  controlID: 105
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 51
+  controlID: 106
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -318,22 +318,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/_Core/Light Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/_Core/Light Assets
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\arthu\Documents\GitHub\CT-Backroom
+  m_LastProjectPath: D:\ProjectY1\CT-Backroom
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 60}
-    m_SelectedIDs: 84930000
-    m_LastClickedID: 37764
-    m_ExpandedIDs: 000000008493000000ca9a3bffffff7f
+    m_SelectedIDs: 78950000
+    m_LastClickedID: 38264
+    m_ExpandedIDs: 00000000fa930000fc93000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -361,7 +361,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000084930000
+    m_ExpandedIDs: 00000000fa930000fc930000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -490,10 +490,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 34950000
+      scrollPos: {x: 0, y: 2556.4}
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 36fbffff
+      m_ExpandedIDs: f6f9ffff68faffffdafaffff34fbffffb2760000d87600003e850000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -743,9 +743,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 31.152885, y: 4.8576756, z: 15.152882}
+    m_Target: {x: -64.11688, y: -139.73581, z: 46.843933}
     speed: 2
-    m_Value: {x: 31.152885, y: 4.8576756, z: 15.152882}
+    m_Value: {x: -64.11688, y: -139.73581, z: 46.843933}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -792,13 +792,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.43322518, y: -0.51354563, z: 0.33756396, w: 0.65932447}
+    m_Target: {x: -0.39425686, y: 0.526159, z: -0.30014953, w: -0.6911283}
     speed: 2
-    m_Value: {x: -0.4332252, y: 0.51354563, z: -0.337564, w: -0.65932447}
+    m_Value: {x: -0.39380032, y: 0.5271872, z: -0.3007361, w: -0.690328}
   m_Size:
-    m_Target: 48.009937
+    m_Target: 110.45032
     speed: 2
-    m_Value: 50.272186
+    m_Value: 110.45032
   m_Ortho:
     m_Target: 0
     speed: 2
