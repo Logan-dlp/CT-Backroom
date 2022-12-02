@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_Core/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_Core/Scenes/FinalScene/CT-BACKROOM.unity
+    guid: 03a7f485e659ff8459902c49be730da0
+  - enabled: 1
+    path: "Assets/_Core/Scenes/Sc\xE8ne Scrpt/UI/Menu.unity"
+    guid: 40bd72d50e249234d84fe9d0c743b925
+  - enabled: 1
+    path: "Assets/_Core/Scenes/Sc\xE8ne Scrpt/UI/Die.unity"
+    guid: 5f7e679f0749d91409a8f8a204b14b40
+  - enabled: 1
+    path: "Assets/_Core/Scenes/Sc\xE8ne Scrpt/UI/Win.unity"
+    guid: c18d1d79d8c3b3c4592945a3d35603a6
   m_configObjects: {}
