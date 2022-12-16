@@ -7,6 +7,7 @@ public class PlayerMouvement : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float dragSpeed;
     [SerializeField] Transform playerOrientation;
+    [SerializeField] GameObject audioWalk;
 
     float horizontalInput;
     float verticalInput;
@@ -30,6 +31,44 @@ public class PlayerMouvement : MonoBehaviour
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
     }
+
+    void InputAudioWalk()
+    {
+        if(Input.GetKeyDown(KeyCode.Z)) 
+        {
+            audioWalk.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Z))
+        {
+            audioWalk.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            audioWalk.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            audioWalk.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            audioWalk.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            audioWalk.gameObject.SetActive(false);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            audioWalk.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            audioWalk.gameObject.SetActive(false);
+        }
+
+    }
+
     void LimitVelocity()
     {
         Vector3 _vel = new Vector3(rb.velocity.x, 0, rb.velocity.y);
@@ -59,6 +98,7 @@ public class PlayerMouvement : MonoBehaviour
         ApplyDrag();
         LimitVelocity();
         ControllerInput();
+        InputAudioWalk();
     }
     #endregion
 }
